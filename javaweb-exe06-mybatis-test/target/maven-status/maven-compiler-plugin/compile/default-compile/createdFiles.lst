@@ -1,0 +1,3 @@
+mobileshop\utils\MybatisUtils.class
+mobileshop\entity\UserEntity.class
+mobileshop\dao\UserDao.class

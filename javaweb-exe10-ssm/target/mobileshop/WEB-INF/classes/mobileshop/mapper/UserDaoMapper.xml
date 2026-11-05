@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mobileshop.dao.UserDao">
+
+    <!-- 用户名或邮箱任意一个已存在，就返回 true -->
+    <select id="existUserNameOrEmail" resultType="boolean">
+        select exists(
+            select 1 from ms_user
+            where username=#{username} or email=#{email}
+        )
+    </select>
+
+    <!-- 查找所有用户 -->
+    <select id="findAll" resultType="mobileshop.entity.UserEntity">
+        select * from ms_user
+    </select>
+
+    <!-- 按用户名查找用户，id 与 findByUserName 方法名一致 -->
+    <select id="findByUserName" resultType="mobileshop.entity.UserEntity">
+        select * from ms_user where username=#{username}
+    </select>
+
+    <!-- 按用户名更新密码。不写 parameterType：
+         既支持 @Param 多参数，也支持测试里传入的 Map -->
+    <update id="updatePassword">
+        update ms_user set password=#{password} where username=#{username}
+    </update>
+
+    <!-- 新增用户，parameterType 为实体类 -->
+    <insert id="save" parameterType="mobileshop.entity.UserEntity">
+        insert into ms_user(username,password,email)
+        values(#{username},#{password},#{email})
+    </insert>
+
+    <!-- 根据用户名删除用户 -->
+    <delete id="deleteByUsername">
+        delete from ms_user where username=#{username}
+    </delete>
+
+</mapper>

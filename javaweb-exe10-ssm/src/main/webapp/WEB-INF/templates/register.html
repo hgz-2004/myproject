@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="cn" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+</head>
+<body>
+<h2>注册</h2>
+<!-- 本练习由后端统一校验，空输入也交给控制器显示提示。 -->
+<form th:action="@{/signup}" method="post" novalidate>
+    <label>用户名：<input type="text" name="username" required></label><br>
+    <label>密码：<input type="password" name="password" required></label><br>
+    <label>邮箱：<input type="email" name="email" required></label><br>
+    <button type="submit">注册</button>
+</form>
+<a th:href="@{/login}">返回登录</a>
+</body>
+</html>
