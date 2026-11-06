@@ -1,6 +1,0 @@
-mobileshop\db\DB.class
-mobileshop\service\LoginService.class
-mobileshop\Application.class
-mobileshop\entity\UserEntity.class
-mobileshop\controller\LoginController.class
-mobileshop\dao\LoginDao.class
